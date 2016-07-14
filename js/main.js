@@ -1,3 +1,4 @@
+{
 class Fighter{
 	constructor(name='player', power=100, health=100){
 		this.name = name;
@@ -40,4 +41,27 @@ let getRandomPoints = (pointNum, minPoint, maxPoint) =>{
 		points.push(Math.floor(Math.random() * (maxPoint - minPoint + 1)) + minPoint);
 	}
 	return points;
+}
+
+let fight = (fighter, improvedFighter, point, ...elseParam )=> {
+	point = point.concat(elseParam);
+	point = shuffle(point);
+	let fighters = [fighter, improvedFighter];
+
+	while(fighters[0].health > 0 && fighters[1].health > 0){
+		fighters[0].hit(fighters[1], point.pop());
+		fighters[1].hit(fighters[0], point.pop());
+	}
+	if(fighters[0].health > fighters[1].health && fighters[0].health > 0){
+		alert(`${fighters[0].name} победил! После схватки у него осталось ${fighters[0].health} HP!`);
+	}
+	else if(fighters[1].health > fighters[0].health && fighters[1].health > 0){
+		alert(`${fighters[1].name} победил! После схватки у него осталось ${fighters[1].health} HP!`);
+	}
+	else{
+		alert(`Ничья:( после схватки у ${fighters[0].name} осталось ${fighters[0].health} HP. У ${fighters[1].name} осталось ${fighters[1].health} HP.`);
+	}
+}
+
+fight(petro, vasyl, getRandomPoints(50, 1, 10),666);
 }
