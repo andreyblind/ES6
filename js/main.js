@@ -20,3 +20,17 @@ class ImprovedFighter extends Fighter{
 		super.hit(enemy, point * 2);
 	}
 }
+
+var petro = new Fighter("petro", 6, 520);
+var vasyl = new ImprovedFighter("vasyl", 6, 750);
+
+let shuffle = myArr => {
+	let index, valueIndex; 
+	for (let i=0; i<=myArr.length-1; i++) {
+		index = Math.floor(Math.random()*i);
+		valueIndex = myArr[index];
+		myArr[index] = myArr[i];
+		myArr[i] = valueIndex;
+  	}
+  	return myArr;
+}
