@@ -34,3 +34,10 @@ let shuffle = myArr => {
   	}
   	return myArr;
 }
+let getRandomPoints = (pointNum, minPoint, maxPoint) =>{
+	let points = [];
+	for(pointNum; pointNum!=0; pointNum--){
+		points.push(Math.floor(Math.random() * (maxPoint - minPoint + 1)) + minPoint);
+	}
+	return points;
+}
